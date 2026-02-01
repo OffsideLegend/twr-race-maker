@@ -1,4 +1,1 @@
-import logging
-
-def initialize() -> logging.Logger:
-    return None
+from .logger import initialize

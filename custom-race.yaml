@@ -1,0 +1,87 @@
+RaceInformation:
+  SessionName: "TWR Test"
+  Password: "twr-auto"
+  Description: "Automated Test"
+ServerDetails:
+  LaunchRace: "Jan 31, 2026 8:45 pm"
+Admins: [
+  "test", "super", "ok"
+]
+TimeLimit:
+  EventType: "Practice + Open Qualifier + Race"
+  EventDuration:
+    Total: 1h
+    Practice: 30m
+    Qualifier: 10m
+    Race: 20m
+Cars:
+  SingleClass:
+    CarName: "Ferrari 296 GT3"
+  MultiClass:
+    Cars: ["Super Formula Lights", "Ford Mustang GT3"]
+Track:
+  Name: "Virginia International Raceway"
+  Layout: "Full Course"
+TrackOptions:
+  MaxDrivers: 30
+  StartType: "Standing"
+  RestartType: "SingleFileMaintain"
+  ConsecutiveCautions: false
+  EnableStartZone: false
+  PaceCar: "Porsche"
+  FastRepairs: -1
+  GreenWhiteCheckered: 0
+  Jokerlaps: 0
+  AutomaticFullCourseYellow: false
+  EnableLuckyDogRule: false
+  WaveArounds: true
+  DoNotCountCautionLaps: false
+TimeOfDay:
+  Practice: "May 15, 2026 12:00 pm"
+  Qualify: 30m
+  Race: 30m
+Weather:
+  Mode: "Static"
+  EventWeather:
+    CloudCover: "MostlyCloudy"
+    TrackMoisture: "Light"
+    Temperature: 78F
+    WindSpeed: 2
+    WindDirection: Northeast
+    Humidity: 45
+RaceOptions:
+  EnableTeamDriving: false
+  LicenceRangeMin: "R1"
+  LicenceRangeMax: "PWC4"
+  RacingDiscipline: "Formula"
+  iRatingRange:
+    Min: 0
+    Max: 15000
+  CarIncidentLimit: -1
+  IncidentPenalties:
+    BeforeFirst: 20
+    PenaltyEvery: -1
+  QualifyingScrutiny: Off
+  EnforceTireChange: false
+  StartWithQualiTireChoice: false
+  DisableCarDamage: true
+  DisableCarDecalsAndNumbers: false
+  NetworkQualityRule: true
+  DisallowVirtualMirror: false
+  SeriesBranding: 0
+  HardcoreLevel: 0
+  RestrictResultsToParticipants: false
+  DriverAllowedLeagues: [
+    "Tonight We Race!"
+  ]
+  SpectatorAllowedLeagues: false
+TrackConditions:
+  LeaveDebris: true
+  GeneratePracticeStartState: true
+  CarryOverQualifyingState: true
+  CarryOverRaceState: true
+AI:
+  AvoidPlayer: false
+  Roster: 1
+  NumberOfAI: 20
+  Type: 1

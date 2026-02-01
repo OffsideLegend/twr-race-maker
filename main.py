@@ -1,15 +1,48 @@
-import base64
 import time
-import logging
+import argparse
 
+from config import config
 from selenium_logger import initialize
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.expected_conditions import element_to_be_clickable
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 logger = initialize()
+
+if logger is None:
+    exit()
+
+# Initialize the parser
+parser = argparse.ArgumentParser(description="Process some integers.")
+
+# Add arguments
+parser.add_argument("--config", type=str, help="config file path")
+
+args = parser.parse_args()
+
+logger.info("Config Input: {}".format(args.config))
+
+raceConfig = config.parse_config(args.config)
+
+raceInfo = raceConfig.pop("RaceInformation")
+serverDetails = raceConfig.pop("ServerDetails")
+admins = raceConfig.pop("Admins")
+timeLimit = raceConfig.pop("TimeLimit")
+cars = raceConfig.pop("Cars")
+track = raceConfig.pop("Track")
+trackOptions = raceConfig.pop("TrackOptions")
+timeOfDay = raceConfig.pop("TimeOfDay")
+weather = raceConfig.pop("Weather")
+raceOptions = raceConfig.pop("RaceOptions")
+trackConditions = raceConfig.pop("TrackConditions")
+ai = raceConfig.pop("AI")
+
+logger.info("Cars: {}".format(cars))
+logger.info("TrackOptions: {}".format(trackOptions))
+
+
+exit()
 
 driver = webdriver.Chrome()
 
