@@ -1,17 +1,13 @@
 import time
 import argparse
 
-from config import config
-from selenium_logger import initialize
+from race_config import config, set_race_info
+from selenium_logger import get_logger
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-logger = initialize()
-
-if logger is None:
-    exit()
+from typing import cast
 
 # Initialize the parser
 parser = argparse.ArgumentParser(description="Process some integers.")
@@ -21,11 +17,15 @@ parser.add_argument("--config", type=str, help="config file path")
 
 args = parser.parse_args()
 
+logger = get_logger()
+
 logger.info("Config Input: {}".format(args.config))
 
 raceConfig = config.parse_config(args.config)
+# raceConfig = config.parse_config(args.config)
 
-raceInfo = raceConfig.pop("RaceInformation")
+set_race_info(raceConfig)
+
 serverDetails = raceConfig.pop("ServerDetails")
 admins = raceConfig.pop("Admins")
 timeLimit = raceConfig.pop("TimeLimit")
@@ -38,8 +38,8 @@ raceOptions = raceConfig.pop("RaceOptions")
 trackConditions = raceConfig.pop("TrackConditions")
 ai = raceConfig.pop("AI")
 
-logger.info("Cars: {}".format(cars))
-logger.info("TrackOptions: {}".format(trackOptions))
+# logger.info("Cars: {}".format(cars))
+# logger.info("TrackOptions: {}".format(trackOptions))
 
 
 exit()

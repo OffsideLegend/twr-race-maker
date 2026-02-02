@@ -1,6 +1,10 @@
+from typing import Dict, Any
+
 import yaml
 
-def parse_config(config_file_path: str) -> dict:
+RaceConfig = Dict[str, Any]
+
+def parse_config(config_file_path: str) -> RaceConfig:
     try:
         with open(config_file_path, 'r', encoding='utf-8') as file:
             # Use safe_load to avoid executing arbitrary code
