@@ -1,7 +1,14 @@
 import time
 import argparse
 
-from race_config import config, set_race_info
+from race_config import config, set_race_info, set_server_details, set_admins, set_time_limit, set_track_conditions
+from race_config.ai import set_ai
+from race_config.cars import set_cars
+from race_config.race_options import set_race_options
+from race_config.time_of_day import set_time_of_day
+from race_config.track import set_track
+from race_config.track_options import set_track_options
+from race_config.weather import set_weather
 from selenium_logger import get_logger
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -25,18 +32,17 @@ raceConfig = config.parse_config(args.config)
 # raceConfig = config.parse_config(args.config)
 
 set_race_info(raceConfig)
-
-serverDetails = raceConfig.pop("ServerDetails")
-admins = raceConfig.pop("Admins")
-timeLimit = raceConfig.pop("TimeLimit")
-cars = raceConfig.pop("Cars")
-track = raceConfig.pop("Track")
-trackOptions = raceConfig.pop("TrackOptions")
-timeOfDay = raceConfig.pop("TimeOfDay")
-weather = raceConfig.pop("Weather")
-raceOptions = raceConfig.pop("RaceOptions")
-trackConditions = raceConfig.pop("TrackConditions")
-ai = raceConfig.pop("AI")
+set_server_details(raceConfig)
+set_admins(raceConfig)
+set_time_limit(raceConfig)
+set_cars(raceConfig)
+set_track(raceConfig)
+set_track_options(raceConfig)
+set_time_of_day(raceConfig)
+set_weather(raceConfig)
+set_race_options(raceConfig)
+set_track_conditions(raceConfig)
+set_ai(raceConfig)
 
 # logger.info("Cars: {}".format(cars))
 # logger.info("TrackOptions: {}".format(trackOptions))
