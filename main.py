@@ -1,6 +1,9 @@
 import time
 import argparse
 
+from driver import get_driver, get_driver_wait
+from navigation import login, go_to_hosted
+from navigation.hosted import create_hosted_race
 from race_config import config, set_race_info, set_server_details, set_admins, set_time_limit, set_track_conditions
 from race_config.ai import set_ai
 from race_config.cars import set_cars
@@ -10,11 +13,8 @@ from race_config.track import set_track
 from race_config.track_options import set_track_options
 from race_config.weather import set_weather
 from selenium_logger import get_logger
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from typing import cast
 
 # Initialize the parser
 parser = argparse.ArgumentParser(description="Process some integers.")
@@ -26,10 +26,18 @@ args = parser.parse_args()
 
 logger = get_logger()
 
-logger.info("Config Input: {}".format(args.config))
-
 raceConfig = config.parse_config(args.config)
-# raceConfig = config.parse_config(args.config)
+
+driver = get_driver()
+
+# Start
+driver.get("https://members-ng.iracing.com")
+
+login()
+
+go_to_hosted()
+
+create_hosted_race()
 
 set_race_info(raceConfig)
 set_server_details(raceConfig)
@@ -44,52 +52,6 @@ set_race_options(raceConfig)
 set_track_conditions(raceConfig)
 set_ai(raceConfig)
 
-# logger.info("Cars: {}".format(cars))
-# logger.info("TrackOptions: {}".format(trackOptions))
-
-
-exit()
-
-driver = webdriver.Chrome()
-
-driver.get("https://members-ng.iracing.com")
-
-wait = WebDriverWait(driver, 15)
-
-loginButton = wait.until(EC.element_to_be_clickable(
-    (By.CSS_SELECTOR, "button")
-))
-loginButton.click()
-
-emailAddress = wait.until(EC.visibility_of_element_located(
-    (By.ID, "memberEmail")
-))
-emailAddress.send_keys("tom9schairer@gmail.com")
-password = wait.until(EC.visibility_of_element_located(
-    (By.ID, "memberPassword")
-))
-
-time.sleep(10)
-
-loginAgain = driver.find_element(By.CSS_SELECTOR, "form").find_element(By.CLASS_NAME, "ir-1d4mx79")
-loginAgain.click()
-
-time.sleep(10)
-
-continueButton = wait.until(EC.visibility_of_element_located(
-    (By.CLASS_NAME, "css-h9kfy")
-))
-continueButton.click()
-
-official = wait.until(EC.visibility_of_element_located(
-    (By.LINK_TEXT, "Hosted")
-))
-official.click()
-
-createARace = wait.until(EC.visibility_of_element_located(
-    (By.CLASS_NAME, "css-3k57h1")
-))
-createARace.click()
 # if modal != None:
 #     driver.find_element(By.CSS_SELECTOR, "button").click()
 
