@@ -13,8 +13,6 @@ from race_config.track import set_track
 from race_config.track_options import set_track_options
 from race_config.weather import set_weather
 from selenium_logger import get_logger
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 
 # Initialize the parser
 parser = argparse.ArgumentParser(description="Process some integers.")

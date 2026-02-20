@@ -3,6 +3,7 @@ RaceInformation:
   Password: "twr-auto"
   Description: "Automated Test"
 ServerDetails:
+  Server: "US-West"
   LaunchRace: "Jan 31, 2026 8:45 pm"
 Admins: [
   "test", "super", "ok"
